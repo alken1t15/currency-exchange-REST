@@ -6,7 +6,7 @@ create table currencies(
 );
 
 
-create table exchangeRates(
+create table exchange_rates(
                               id serial primary key,
                               base_currency_id int references currencies(id) not null ,
                               target_currency_id int references currencies(id) not null ,
@@ -20,3 +20,11 @@ insert into currencies (code, full_name, sign) VALUES ('KZT','Tenge','₸');
 insert into currencies (code, full_name, sign) VALUES ('RUB','Russian Ruble','₽');
 insert into currencies (code, full_name, sign) VALUES ('CNY','Yuan Renminbi','¥');
 insert into currencies (code, full_name, sign) VALUES ('JPY','Yen','¥');
+
+
+insert into exchange_rates (base_currency_id, target_currency_id, rate) VALUES (2,3,1.1);
+insert into exchange_rates (base_currency_id, target_currency_id, rate) VALUES (2,4,489.44);
+insert into exchange_rates (base_currency_id, target_currency_id, rate) VALUES (3,4,446.07);
+insert into exchange_rates (base_currency_id, target_currency_id, rate) VALUES (2,5,91.78);
+insert into exchange_rates (base_currency_id, target_currency_id, rate) VALUES (3,5,100.7);
+insert into exchange_rates (base_currency_id, target_currency_id, rate) VALUES (5,4,4.86);
