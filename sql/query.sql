@@ -28,3 +28,9 @@ insert into exchange_rates (base_currency_id, target_currency_id, rate) VALUES (
 insert into exchange_rates (base_currency_id, target_currency_id, rate) VALUES (2,5,91.78);
 insert into exchange_rates (base_currency_id, target_currency_id, rate) VALUES (3,5,100.7);
 insert into exchange_rates (base_currency_id, target_currency_id, rate) VALUES (5,4,4.86);
+
+
+
+select e from exchange_rates e join Currencies  c on  c.id = e.base_currency_id join currencies c2 on c2.id = e.target_currency_id where c.id=(select c.id from Currencies c where c.code = 'USD') and c2.id= (select c.id from Currencies c where c.code = 'RUB');
+
+select e from exchange_rates e join Currencies  c on  c.id = e.base_currency_id join Currencies c2 on c2.id = e.target_currency_id where c.id=(select c.id from Currencies c where c.code = 'USD') and c2.id= (select c.id from Currencies c where c.code = 'EUR')

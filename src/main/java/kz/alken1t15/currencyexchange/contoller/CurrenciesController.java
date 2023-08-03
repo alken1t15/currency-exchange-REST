@@ -18,24 +18,24 @@ public class CurrenciesController {
     private final CurrenciesService currenciesService;
 
     @GetMapping()
-    public ResponseEntity<List<Currencies>> currencies(){
-        return new  ResponseEntity<>(currenciesService.findAll(),HttpStatus.OK);
+    public ResponseEntity<List<Currencies>> currencies() {
+        return new ResponseEntity<>(currenciesService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<Currencies> currencies(@PathVariable String name){
-        if (name.isEmpty() && name==null){
+    public ResponseEntity<Currencies> currencies(@PathVariable String name) {
+        if (name.isEmpty() && name == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
         Currencies currencies = currenciesService.findByCode(name);
-        if (currencies==null){
-            return new  ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        if (currencies == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
-        return new  ResponseEntity<>(currencies,HttpStatus.OK);
+        return new ResponseEntity<>(currencies, HttpStatus.OK);
     }
 
     @PostMapping()
-    public HttpStatus currencies(@RequestBody CurrenciesDTO currenciesDTO){
-        return currenciesService.save(currenciesDTO.getName(),currenciesDTO.getCode().toUpperCase(),currenciesDTO.getSign());
+    public HttpStatus currencies(@RequestBody CurrenciesDTO currenciesDTO) {
+        return currenciesService.save(currenciesDTO.getName(), currenciesDTO.getCode().toUpperCase(), currenciesDTO.getSign());
     }
 }
